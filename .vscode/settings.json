@@ -18,5 +18,5 @@
   // Double-click in the PDF jumps to that line in main.tex
   "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
   "latex-workshop.message.warning.show": false,
-  "files.exclude": { "tools": true, "**/*.log": true, "**/*.synctex.gz": true }
+  "files.exclude": { "**/tools": true, "**/*.log": true, "**/*.synctex.gz": true }
 }
