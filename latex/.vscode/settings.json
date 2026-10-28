@@ -1,0 +1,22 @@
+{
+  // Build with the Tectonic bundled in tools/ (resolves to tectonic.exe on Windows)
+  "latex-workshop.latex.tools": [
+    {
+      "name": "tectonic",
+      "command": "tools/tectonic/tectonic",
+      "args": ["--synctex", "--keep-logs", "%DOC_EXT%"]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    { "name": "Tectonic (bundled)", "tools": ["tectonic"] }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  // Rebuild the PDF every time main.tex is saved
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  // Show the PDF in a VS Code tab beside the text
+  "latex-workshop.view.pdf.viewer": "tab",
+  // Double-click in the PDF jumps to that line in main.tex
+  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+  "latex-workshop.message.warning.show": false,
+  "files.exclude": { "tools": true, "**/*.log": true, "**/*.synctex.gz": true }
+}

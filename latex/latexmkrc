@@ -1,0 +1,6 @@
+# This report uses XeLaTeX (bundled Arial / Times New Roman via fontspec); much faster than LuaLaTeX.
+# Overleaf runs latexmk with its own engine flag, so redirect every engine to XeLaTeX.
+$pdf_mode = 5;
+$xelatex = 'xelatex -interaction=nonstopmode -file-line-error %O %S';
+$pdflatex = 'xelatex -interaction=nonstopmode -file-line-error %O %S';
+$lualatex = 'xelatex -interaction=nonstopmode -file-line-error %O %S';

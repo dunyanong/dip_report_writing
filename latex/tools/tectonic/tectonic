@@ -1,0 +1,12 @@
+#!/bin/sh
+# Runs the bundled Tectonic for this computer (Windows uses tectonic.exe next to this file instead).
+DIR="$(cd "$(dirname "$0")" && pwd)"
+case "$(uname -s)-$(uname -m)" in
+  Darwin-arm64) BIN="$DIR/macos-arm64/tectonic" ;;
+  Darwin-*)     BIN="$DIR/macos-x64/tectonic" ;;
+  *)            BIN="$DIR/linux/tectonic" ;;
+esac
+# Files from a downloaded zip are quarantined on macOS, which blocks the compiler from running
+[ "$(uname -s)" = Darwin ] && xattr -dr com.apple.quarantine "$DIR" 2>/dev/null
+chmod +x "$BIN" 2>/dev/null
+exec "$BIN" "$@"
