@@ -101,11 +101,11 @@ Naili Naufal Bin Abdul Rashid & U2421878A \\ \hline
 \clearpage
 \Hone{Abstract}{Abstract}
 
-Calq is a scientific calculator for iOS and Android that does what students actually need: it remembers every calculation, syncs it across their devices, exports it straight into lab reports and revision notes, and explains its working. It feels like the Casio students already know, then goes much further: two extra keypad pages bring matrices, complex numbers, multivariable calculus, differential equations, optimisation, number theory and graph algorithms to the phone, all computed on the device with proven numerical methods.
+Calq is a scientific calculator for Android, built on a cross-platform code base so an iOS release can follow, that does what students actually need: it remembers every calculation, syncs it across their devices, exports it straight into lab reports and revision notes, and explains its working. It feels like the Casio students already know, then goes much further: two extra keypad pages bring matrices, complex numbers, multivariable calculus, differential equations, optimisation, number theory and graph algorithms to the phone, all computed on the device with proven numerical methods.
 
 Calq also uses AI in a way no other calculator does. Students can photograph a problem, ask for a shortcut through hard arithmetic, find an antiderivative, or export AI-written study notes, and every number they see is still guaranteed by the calculator itself. The model only proposes; the phone recomputes every value and checks every claim before anything reaches the screen.
 
-The results back this up. Calq matched all 40 reference values to better than 10\textsuperscript{−8} and solved integrals that defeat textbook methods to 6.5×10\textsuperscript{−14}. Its checkers caught 63 of 64 deliberately corrupted AI answers (98.4\%) while keeping 97.1\% of correct ones. All 546 automated tests pass with 92.1\% line coverage, and the app runs on iOS and Android today, built for a hardware and software budget of SGD 0 \fillin{[CONFIRM AI API spend]}.
+The results back this up. Calq matched all 40 reference values to better than 10\textsuperscript{−8} and solved integrals that defeat textbook methods to 6.5×10\textsuperscript{−14}. Its checkers caught 63 of 64 deliberately corrupted AI answers (98.4\%) while keeping 97.1\% of correct ones. All 546 automated tests pass with 92.1\% line coverage, and the app runs on Android today (iOS is future work), built for a hardware and software budget of SGD 0 and USD 0.056 (about SGD 0.07) of AI API usage.
 
 \clearpage
 \Hone{Table of Contents}{Table of Contents}
@@ -258,7 +258,7 @@ Calq consists of a mobile app and a small serverless backend. Figure 3.1 shows t
 \Htwo{3.1 In scope}{3.1 In scope}
 
 \begin{itemize}
-\item \textbf{Calculator app} for iOS and Android: four swipeable keypad pages (NUMERIC, SCIENTIFIC, MATRIX · CALCULUS, SOLVE · DISCRETE), live preview, memory and variables, degree/radian/gradian modes, real or complex numbers, decimal or fraction output, light and dark themes.
+\item \textbf{Calculator app} for Android, from a code base that also runs on iOS: four swipeable keypad pages (NUMERIC, SCIENTIFIC, MATRIX · CALCULUS, SOLVE · DISCRETE), live preview, memory and variables, degree/radian/gradian modes, real or complex numbers, decimal or fraction output, light and dark themes.
 \item \textbf{History} that works for guests on the device and syncs for signed-in users, with pin, copy, undo, reopen and multi-select export.
 \item \textbf{Exports} in five formats to the share sheet or a Google Drive folder.
 \item \textbf{AI help} for signed-in users (scan, step shortcuts, antiderivatives, study notes), each checked on the device and limited by a daily quota.
@@ -270,7 +270,7 @@ Calq consists of a mobile app and a small serverless backend. Figure 3.1 shows t
 
 \begin{itemize}
 \item Graph plotting of functions (on the roadmap; see §8.3).
-\item Publishing on the App Store and Google Play. We distributed development builds and an Android APK instead, which needs no paid developer account.
+\item An iOS release, and publishing on the App Store and Google Play. We distributed an Android APK instead, which needs no paid developer account.
 \item Training or fine-tuning our own models. The models are used as provided, only through prompts.
 \item Examination use. Calq is a study and revision tool, not a replacement for an SEAB- or NTU-approved calculator.
 \end{itemize}
@@ -721,7 +721,7 @@ O3 & Local steps for all multi-operation tests & 20/20 expressions & Met \\ \hli
 O4 & Typical calculation < 16 ms; slow keys show progress & 8 of 10 classes < 3 ms; ∫∫∫ 120 ms and Σ of 10\textsuperscript{5} terms 95 ms show “Working it out…” & Met \\ \hline
 O5 & Rules tests pass; sync works & 16/16 rules tests; two-device sync checked manually & Met \\ \hline
 O6 & All tests pass; ≥ 80\% lines; no lint errors & 546/546 pass; 92.1\% lines; 0 lint errors & Met \\ \hline
-O7 & SGD 0 spend; builds before Week 12 & SGD 0 hardware/software \fillin{[CONFIRM AI API spend]}; iOS and Android builds in Week 10 & Met \fillin{[CONFIRM]} \\ \hline
+O7 & SGD 0 spend; builds before Week 12 & SGD 0 hardware/software and USD 0.056 (about SGD 0.07) AI API; Android APK in Week 10, iOS release deferred to future work & Met \fillin{[CONFIRM]} \\ \hline
 \end{tabular}
 \end{tableblock}
 \tabcaption{Table 6.2: Results against the objectives of Table 1.1}{Table 6.2: Results against the objectives of Table 1.1}
@@ -784,7 +784,7 @@ The charter planned a budget of SGD 0, well within the course limit of SGD 1,000
 Development hardware (laptops, phones) & 0 & 0 & Members’ own devices \\ \hline
 Expo, React Native, math.js, GitHub, Claude Design & 0 & \fillin{[CONFIRM]} & Free and open-source tools; Claude Design under an existing Claude plan \fillin{[CONFIRM]} \\ \hline
 Firebase (Auth, Firestore, Cloud Functions) & 0 & \fillin{[FILL IN]} & Blaze pay-as-you-go plan is required for Cloud Functions; usage stayed within the free allowance \fillin{[CONFIRM]} \\ \hline
-AI model API (OpenRouter) & 0 & \fillin{[FILL IN]} & Pay per token; daily quotas cap the worst case \\ \hline
+AI model API (OpenRouter) & 0 & 0.07 & USD 0.056, pay per token; daily quotas cap the worst case \\ \hline
 Apple Developer Program / Google Play & 0 & 0 & Not needed: development builds and APK sharing \\ \hline
 \textbf{Total} & \textbf{0} & \textbf{[FILL IN]} & Within the SGD 1,000 course limit \\ \hline
 \end{tabular}
@@ -855,7 +855,7 @@ When the advanced keys arrived, matrix and SVD results outgrew the original 200-
 \item \textbf{A scan benchmark} of about 100 labelled photos from NTU tutorial sheets and handwritten notes, to tune the scan prompt further.
 \item \textbf{Even sharper notes,} by tightening how the guard reads claims and counting words.
 \item \textbf{Self-hosted models:} the provider is a single setting, so Qwen3 could run on school GPUs with no code changes.
-\item \textbf{App Store and Google Play release,} after a usability study with classmates.
+\item \textbf{iOS release, and App Store and Google Play publishing,} after a usability study with classmates.
 \end{itemize}
 
 \Hone{9. Individual Contributions}{9. Individual Contributions}
